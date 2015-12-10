@@ -1,17 +1,41 @@
 <?php
+defined('_JEXEC') or die;
+
 class PlgMediaEditorExample extends JPlugin
 {
-    public function onMediaEditorDisplay($filePath)
-    {
-        // @suggestion: Add CSS, JavaScript
-        // @suggestion: Render your own JLayout
+	public function onMediaEditorDisplay($filePath, $postUrl)
+	{
+		// @suggestion: Add CSS, JavaScript
 
-        return 'Example Media Edit Plugin';
-    }
+		$data   = array('filePath' => $filePath, 'postUrl' => $postUrl);
+		$layout = new JLayoutFile('form', __DIR__ . '/layout');
+		$html   = $layout->render($data);
 
-    public function onMediaEditorProcess($filePath)
-    {
-        $image = new JImage($filePath);
-        $image->rotate(180, -1, false);
-    }
+		return $html;
+	}
+
+	public function onMediaEditorProcess($filePath)
+	{
+		$image = new JImage($filePath);
+
+		if ($image->isLoaded() == false)
+		{
+			throw new LogicException('Failed to load image');
+		}
+
+		$image->rotate(180, 0, false);
+
+		$extension = JFile::getExt($filePath);
+
+		if (in_array($extension, array('png', 'gif')))
+		{
+			$imageType = $extension;
+		}
+		else
+		{
+			$imageType = 'jpg';
+		}
+
+		$image->toFile($filePath, $imageType);
+	}
 }
