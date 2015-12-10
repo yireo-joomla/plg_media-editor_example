@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.5" type="plugin" group="media-editor" method="upgrade">
+	<name>plg_media-editor_example</name>
+	<version>0.0.1</version>
+	<creationDate>10-12-2015</creationDate>
+	<author>Jisse Reitsma</author>
+	<authorEmail>jisse@yireo.com</authorEmail>
+	<authorUrl>https://www.yireo.com</authorUrl>
+	<copyright>Yireo</copyright>
+	<license>GPL</license>
+	<description>Example plugin</description>
+
+	<files>
+		<filename plugin="example">example.php</filename>
+	</files>
+</extension>
