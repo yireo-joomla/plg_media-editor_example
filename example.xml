@@ -12,5 +12,6 @@
 
 	<files>
 		<filename plugin="example">example.php</filename>
+		<folder>layout</folder>
 	</files>
 </extension>

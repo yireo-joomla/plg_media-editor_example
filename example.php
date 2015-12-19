@@ -3,6 +3,11 @@ defined('_JEXEC') or die;
 
 class PlgMediaEditorExample extends JPlugin
 {
+	public function onMediaEditorButtonLabel()
+	{
+		return 'Example';
+	}
+
 	public function onMediaEditorDisplay($filePath, $postUrl)
 	{
 		// @suggestion: Add CSS, JavaScript
