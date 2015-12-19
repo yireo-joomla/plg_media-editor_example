@@ -3,6 +3,16 @@ defined('_JEXEC') or die;
 
 class PlgMediaEditorExample extends JPlugin
 {
+	public function onMediaEditorAllowed($fileType)
+	{
+		if ($fileType == 'image')
+		{
+			return true;
+		}
+
+		return false;
+	}
+
 	public function onMediaEditorButtonLabel()
 	{
 		return 'Example';
