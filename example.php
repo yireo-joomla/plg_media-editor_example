@@ -8,11 +8,11 @@ class PlgMediaEditorExample extends JPlugin
 		return 'Example';
 	}
 
-	public function onMediaEditorDisplay($filePath, $postUrl)
+	public function onMediaEditorDisplay($filePath)
 	{
 		// @suggestion: Add CSS, JavaScript
 
-		$data   = array('filePath' => $filePath, 'postUrl' => $postUrl);
+		$data   = array('filePath' => $filePath);
 		$layout = new JLayoutFile('form', __DIR__ . '/layout');
 		$html   = $layout->render($data);
 
@@ -21,6 +21,8 @@ class PlgMediaEditorExample extends JPlugin
 
 	public function onMediaEditorProcess($filePath)
 	{
+		jimport('joomla.filesystem.file');
+
 		$image = new JImage($filePath);
 
 		if ($image->isLoaded() == false)
